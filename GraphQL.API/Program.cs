@@ -1,9 +1,11 @@
 using GrapgQL.Core.Services;
 using GrapgQL.Core.UnitOfWork;
+using GraphQL.API.Schema.Developers;
+using GraphQL.API.Schema.ProjectItems;
+using GraphQL.API.Schema.Projects;
 using GraphQL.DAL;
 using GraphQL.DAL.UnitOfWork;
 using GraphQL.Service.Services;
-using GraphQLDemo.API.Schema;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +26,9 @@ builder.Services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 builder.Services
     .AddGraphQLServer()
     .RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
-    .AddQueryType<Query>();
+    .AddQueryType(x => x.Name("Query")).AddType<DeveloperQuery>().AddType<ProjectQuery>().AddType<ProjectItemQuery>()
+    .AddMutationType(x => x.Name("Mutation")).AddType<DeveloperMutation>().AddType<ProjectMutation>().AddType<ProjectItemMutation>()
+    .AddProjections().AddFiltering().AddSorting();
 
 var app = builder.Build();
 

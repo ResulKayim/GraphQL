@@ -10,12 +10,12 @@ namespace GrapgQL.Core.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime Deadline { get; set; }
-        public Guid ProjectId { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? Deadline { get; set; }
+        public Guid? ProjectId { get; set; }
 
-        public ICollection<Developer> Developers { get; set; }
-        public Project Project { get; set; }
+        public ICollection<Developer>? Developers { get; set; }
+        public Project? Project { get; set; }
 
     }
 }

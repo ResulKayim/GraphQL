@@ -2,16 +2,17 @@
 using GrapgQL.Core.Repositories;
 using GrapgQL.Core.UnitOfWork;
 using GraphQL.DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.DAL.UnitOfWork
 {
-    public class UnitOfWork<TEntity> : IUnitOfWork<TEntity> where TEntity : Base, new()
+    public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>, IAsyncDisposable where TEntity : Base, new()
     {
         private readonly AppDbContext _dbContext;
 
-        public UnitOfWork(AppDbContext dbContext)
+        public UnitOfWork(IDbContextFactory<AppDbContext> pooledDbContextFactory)
         {
-            _dbContext = dbContext;
+            _dbContext = pooledDbContextFactory.CreateDbContext();
         }
 
         public void Commit()
@@ -27,6 +28,11 @@ namespace GraphQL.DAL.UnitOfWork
         public IRepository<TEntity> Repostiory()
         {
             return new Repository<TEntity>(_dbContext);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await _dbContext.DisposeAsync();
         }
     }
 }

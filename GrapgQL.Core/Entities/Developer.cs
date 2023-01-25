@@ -9,7 +9,7 @@ namespace GrapgQL.Core.Entities
     public class Developer : Base
     {
         public string Name { get; set; }
-        public ICollection<Project> Projects { get; set; }
-        public ICollection<ProjectItem> ProjectItems { get; set; }
+        public ICollection<Project>? Projects { get; set; }
+        public ICollection<ProjectItem>? ProjectItems { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GrapgQL.Core.Entities;
+using GraphQL.DAL.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

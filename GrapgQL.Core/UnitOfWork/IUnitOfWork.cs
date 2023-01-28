@@ -3,10 +3,10 @@ using GrapgQL.Core.Repositories;
 
 namespace GrapgQL.Core.UnitOfWork
 {
-    public interface IUnitOfWork<TEntity> where TEntity : Base
+    public interface IUnitOfWork
     {
         public void Commit();
         public Task CommitAsync();
-        public IRepository<TEntity> Repostiory();
+        public IRepository<TEntity> GetRepostiory<TEntity>() where TEntity : Base, new();
     }
 }

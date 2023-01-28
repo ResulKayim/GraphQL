@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.DAL.UnitOfWork
 {
-    public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>, IAsyncDisposable where TEntity : Base, new()
+    public class UnitOfWork : IUnitOfWork, IAsyncDisposable
     {
         private readonly AppDbContext _dbContext;
 
@@ -24,8 +24,7 @@ namespace GraphQL.DAL.UnitOfWork
         {
             await _dbContext.SaveChangesAsync();
         }
-
-        public IRepository<TEntity> Repostiory()
+        public IRepository<TEntity> GetRepostiory<TEntity>() where TEntity : Base, new()
         {
             return new Repository<TEntity>(_dbContext);
         }
@@ -34,5 +33,6 @@ namespace GraphQL.DAL.UnitOfWork
         {
             await _dbContext.DisposeAsync();
         }
+
     }
 }

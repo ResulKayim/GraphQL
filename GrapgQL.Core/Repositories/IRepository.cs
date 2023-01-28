@@ -1,6 +1,8 @@
-﻿namespace GrapgQL.Core.Repositories
+﻿using GrapgQL.Core.Entities;
+
+namespace GrapgQL.Core.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : Base
     {
         public IQueryable<TEntity> GetAll();
         public Task<TEntity> GetById(Guid id);

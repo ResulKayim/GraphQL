@@ -7,13 +7,13 @@ namespace GraphQL.Service.Services
 {
     public class Service<TEntity> : IService<TEntity> where TEntity : Base, new()
     {
-        private readonly IUnitOfWork<TEntity> _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<TEntity> _repository;
 
-        public Service(IUnitOfWork<TEntity> unitOfWork)
+        public Service(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _repository = unitOfWork.Repostiory();
+            _repository = unitOfWork.GetRepostiory<TEntity>();
         }
 
         public async Task<TEntity> Create(TEntity entity)

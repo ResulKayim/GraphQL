@@ -20,7 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
-builder.Services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 // GraphQL
 builder.Services

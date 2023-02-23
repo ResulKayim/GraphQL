@@ -9,10 +9,12 @@ namespace GraphQL.DAL.UnitOfWork
     public class UnitOfWork : IUnitOfWork, IAsyncDisposable
     {
         private readonly AppDbContext _dbContext;
+        private Dictionary<Type, object> repositories;
 
         public UnitOfWork(IDbContextFactory<AppDbContext> pooledDbContextFactory)
         {
             _dbContext = pooledDbContextFactory.CreateDbContext();
+            repositories = new();
         }
 
         public void Commit()
@@ -26,12 +28,19 @@ namespace GraphQL.DAL.UnitOfWork
         }
         public IRepository<TEntity> GetRepostiory<TEntity>() where TEntity : Base, new()
         {
-            return new Repository<TEntity>(_dbContext);
+            if (repositories.ContainsKey(typeof(IRepository<TEntity>)))
+                return (IRepository<TEntity>)repositories[typeof(IRepository<TEntity>)];
+
+            IRepository<TEntity> repository = new Repository<TEntity>(_dbContext);
+            repositories.Add(typeof(IRepository<TEntity>), repository);
+            return repository;
+            //return new Repository<TEntity>(_dbContext);
         }
 
         public async ValueTask DisposeAsync()
         {
             await _dbContext.DisposeAsync();
+            repositories.Clear();
         }
 
     }

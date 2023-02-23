@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Demo", "GraphQL.Demo\GraphQL.Demo.csproj", "{69618037-4A5E-4B59-BF39-5D0EE9BCF8DF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.API", "GraphQL.API\GraphQL.API.csproj", "{74A214F4-3854-4BB9-BA28-50691530C98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrapgQL.Core", "GrapgQL.Core\GrapgQL.Core.csproj", "{1A5E2313-0F7E-45B5-B19A-E085F8B350F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrapgQL.Core", "GrapgQL.Core\GrapgQL.Core.csproj", "{1A5E2313-0F7E-45B5-B19A-E085F8B350F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.DAL", "GraphQL.DAL\GraphQL.DAL.csproj", "{A556E4AA-5703-4AAD-8C67-B307E08E0567}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.DAL", "GraphQL.DAL\GraphQL.DAL.csproj", "{A556E4AA-5703-4AAD-8C67-B307E08E0567}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Service", "GraphQL.Service\GraphQL.Service.csproj", "{4C3D981A-35E4-409F-8F04-FBCDCC551EBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Service", "GraphQL.Service\GraphQL.Service.csproj", "{4C3D981A-35E4-409F-8F04-FBCDCC551EBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69618037-4A5E-4B59-BF39-5D0EE9BCF8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69618037-4A5E-4B59-BF39-5D0EE9BCF8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69618037-4A5E-4B59-BF39-5D0EE9BCF8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69618037-4A5E-4B59-BF39-5D0EE9BCF8DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74A214F4-3854-4BB9-BA28-50691530C98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74A214F4-3854-4BB9-BA28-50691530C98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74A214F4-3854-4BB9-BA28-50691530C98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
